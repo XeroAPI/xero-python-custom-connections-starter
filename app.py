@@ -36,7 +36,7 @@ api_client = ApiClient(
     pool_threads=1,
 )
 
-# configure token persistence and exchange point between flask-oauthlib and xero-python
+# configure token persistence and exchange point between app session and xero-python
 @api_client.oauth2_token_getter
 def obtain_xero_oauth2_token():
     return session.get("token")
