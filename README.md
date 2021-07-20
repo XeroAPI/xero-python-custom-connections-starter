@@ -1,7 +1,6 @@
-# TODO - update readme for custom connections
-# xero-python-oauth-starter
+# Xero Python Custom Connection Starter
 
-This is a starter app with the code to perform OAuth 2.0 authentication
+This is a starter app with the code to get you interacting with the Xero API using the xero-python SDK and OAuth 2.0 Client Credentials authorisation method.
 
 You'll be able to connect to a Xero Organisation and make real API calls - we recommend you connect to the Demo company.
 Please use your Demo Company organisation for your testing. 
@@ -29,13 +28,12 @@ To obtain your API keys, follow these steps and create a Xero app
 * Create a [free Xero user account](https://www.xero.com/us/signup/api/) (if you don't have one)
 * Login to [Xero developer center](https://developer.xero.com/myapps)
 * Click "New App" link
-* Enter your App name, company url, privacy policy url.
-* Enter the redirect URI (your callback url - i.e. `http://localhost:5000/callback`)
-    * Be aware `http://localhost/` and `http:/127.0.0.1/` are different urls
-* Agree to terms and condition and click "Create App".
-* Click "Generate a secret" button.
-* Copy your client id and client secret and save for use later.
-* Click the "Save" button. You secret is now hidden.
+* Select "Custom connection"
+* Enter your app details
+* Click "Create app"
+* Follow the on-screen prompts to select scopes and appoint an authorised user
+* The user will have to authorise via the email they received from Xero
+* Return to the app details page to obtain your client ID and generate a client secret
 
 ## Configure API keys
 * Create a `config.py` file in the root directory of this project & add the 2 variables
@@ -48,19 +46,17 @@ CLIENT_SECRET = "...client secret string..."
 
 * Make sure your python virtual environment activated `source venv/bin/activate`
 * Start flask application `python3 app.py`
-* Launch your browser and navigate to http://localhost:5000/login 
-* You should be redirected to Xero login page.
-* Grant access to your user account and select the Demo company to connect to.
+* Launch your browser and navigate to http://localhost:5000/
+* Click "Get Token"
+* If everything was configured correctly your app will receive a token from Xero API
 * Done - try out the different API calls
 
 ### This starter app functions include:
 
-* connect & reconnect to xero
+* Obtaining a token from Xero API via Client Credentials grant method
 * storing Xero token in a permanent flask session (in local drive file)
-* refresh Xero access token on expiry  (happens automatically)
 * read organisation information from /organisation endpoint
 * read invoices information from /invoices endpoint
-* create a new contact in Xero
 
 ## License
 
